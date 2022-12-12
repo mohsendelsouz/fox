@@ -15,6 +15,7 @@ class MainController extends Controller
         return view('front.index');
     }
     function stripePayment(Request $request){
+      // dd($request);
          Stripe\Stripe::setApiKey('sk_test_51LxpoiIHIgjMjhjeZEu5V8poG3suICL7K5t3WO2Pu4qozcv396J7EHFugZaGH4nDVlfLu4SXfIS4mNtS0EMtyGfB003FVtPnGQ');
 
         // Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
@@ -22,29 +23,30 @@ class MainController extends Controller
   
 
         $customer = Stripe\Customer::create(array(
-    
-                "address" => [
-    
-                        "line1" => "Dhaka",
-    
-                        "postal_code" => "360001",
-    
-                        "city" => "Mohammadpur",
-    
-                        "state" => "Dhaka",
-    
-                        "country" => "Bangladesh",
-    
-                    ],
-    
-                "email" => "demo@gmail.com",
-    
+                "email" => $request->email,
                 "name" => $request->name,
-    
                 "source" => $request->stripeToken
     
              ));
-    
+            //  dd($customer);
+            //  $stripe = new \Stripe\StripeClient(
+            //   'sk_test_51LxpoiIHIgjMjhjeZEu5V8poG3suICL7K5t3WO2Pu4qozcv396J7EHFugZaGH4nDVlfLu4SXfIS4mNtS0EMtyGfB003FVtPnGQ'
+            // );
+            // $stripe->plans->create([
+            //   'amount' => ($request->amount )*100,
+            //   'currency' => 'usd',
+            //   'interval' => $request->type,
+            //   'product' => $request->package,
+            // ]);
+            // $stripe = new \Stripe\StripeClient(
+            //   'sk_test_51LxpoiIHIgjMjhjeZEu5V8poG3suICL7K5t3WO2Pu4qozcv396J7EHFugZaGH4nDVlfLu4SXfIS4mNtS0EMtyGfB003FVtPnGQ'
+            // );
+            // $stripe->subscriptionItems->create([
+            //   'subscription' => $request->package,
+            //   'price' => $request->price,
+            //   'quantity' => $request->type
+            // ]);
+          
       
     
              Stripe\Charge::create ([
@@ -79,13 +81,22 @@ class MainController extends Controller
     
         ]); 
     
-      
+        $stripe = new \Stripe\StripeClient(
+          'sk_test_51LxpoiIHIgjMjhjeZEu5V8poG3suICL7K5t3WO2Pu4qozcv396J7EHFugZaGH4nDVlfLu4SXfIS4mNtS0EMtyGfB003FVtPnGQ'
+        );
+        $stripe->subscriptions->create([
+          // 'customer_id'=>,
+          'customer' => $customer->id,
+          'items' => [
+            ['price' => $request->price],
+          ],
+        ]);
     
       
     
                
     
-        return back();
+        return back()->with('status','Your Payment has been successfull!');
         
     }
 
@@ -105,6 +116,9 @@ class MainController extends Controller
         'email' => $request->email,
         ];
         \Mail::to('support@searchconsolesheet.com')->send(new \App\Mail\ContactMail($details));
-        return redirect(route('index'));
+        return back()->with('message','Message has been send successfully');
+    }
+    function contact(){
+      return view('front.contact');
     }
 }

@@ -2446,27 +2446,14 @@
 </section>
    <!-- Start  Footer -->
    <footer class="padding-100 pb-0">
-    <div class="subscribe">
-        <div class="container">
-            <form class="subscribe-form row m-0 align-items-center">
-                <div class="col-lg-9 col-md-8">
-                    <div class="form-group mb-0">
-                        <input type="text" class="form-control" placeholder="Enter Your Email">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <a href="#" class="btn btn-primary shadow d-block btn-colord btn-theme"><span>subscribe</span></a>
-                </div>
-            </form>
-        </div>
-    </div>
+
     <div class="space-50"></div>
-    <div class="footer-widgets">
+    <div class="footer-widgets" style="margin-top: -100px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="widget">
-                        <img src="assets/img/fox-logo.png" class="img-fluid" alt="">
+                        <img src="{{url('assets/Searchconsolesheet.png')}}" style="height: 43px; width: 248px;margin-top: -8px;" class="img-fluid" alt="">
                         <p>Sed pottitor lects nibh. Viamus magna justo, lacinia eget consectetur sed, convallis
                             at
                             tellus.
