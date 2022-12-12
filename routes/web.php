@@ -21,4 +21,5 @@ Route::controller(MainController::class)->group(function(){
     Route::get('/Terms-&-conditions','terms')->name('terms');
     Route::post('/stripe-payment','stripePayment')->name('stripePayment');
     Route::post('/sendMail','sendMail')->name('sendMail');
+    Route::get('/contact','contact')->name('contact');
 });

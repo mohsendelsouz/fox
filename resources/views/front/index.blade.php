@@ -8,8 +8,6 @@
     </div>
 </div>
 <!-- End Preloader -->
-
-<!-- Start Header -->
 <header class="foxapp-header">
     <nav class="navbar navbar-expand-lg navbar-light" id="foxapp_menu">
         <div class="container">
@@ -49,7 +47,7 @@
                         </div>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link anchor" href="#git_in_touch">Contact us</a>
+                        <a class="nav-link anchor" href="{{route('contact')}}">Contact us</a>
                     </li>
                 </ul>
             </div>
@@ -59,11 +57,12 @@
 <!-- End Header -->
 
 <!-- Start Header -->
+
 <section id="slide" class="slide background-withcolor">
     <div class="content-bottom" style="margin-top: -49px;">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6" data-aos="fade-right" style="margin-top: -312px;">
+                <div class="col-md-6" data-aos="fade-right">
                     {{-- <p class="mb-0">With us you will</p> --}}
                     <p style=" font-size: 31px;">Easy Search Console analysis</p>
                     <p>
@@ -71,11 +70,16 @@
                         <span style="font-size: 15px">Search Console<sup>TM</sup> into Google Sheets<sup>TM</sup></span>
                         
                     </p>
-                    <a href="#" class="btn btn-primary btn-white shadow btn-theme"><span>GET THE ADDON FOR GOOGLE SHEET</span></a>
+                    <a href="#" class="btn btn-primary btn-white shadow btn-theme"><span>GET THE ADDON FOR GOOGLE SHEET</span></a><br><br>
+                    <div class="test">
+                        <input type="text" class="form-control" style="width: 61%;height: 47px; border-radius: 49px;" placeholder="Enter your email"><br>
+                        <a href="#" class="btn btn-primary btn-white shadow btn-theme"><span>subscribe</span></a>
+                    </div>
+                    
                 </div>
                 <div class="col-md-6" data-aos="fade-left" data-aos-delay="200" style="margin-top: -70px; height: 650px;">
                     {{-- <img src="assets/img/mobile-1.png" class="img-fluid d-block mx-auto" alt=""> --}}
-                    <img src="{{url('assets/1.png')}}" class="img-fluid d-block mx-auto" alt="" style="position: absolute; /* top: -504px; */ transform: scale3d(1.5, 1.5, 1.5) perspective(446px) rotateY(326deg); margin-top: 160px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <img src="{{url('assets/1.png')}}" class="img-fluid d-block mx-auto img-responsive" alt="" style="position: absolute; /* top: -504px; */ transform: scale3d(1.5, 1.5, 1.5) perspective(446px) rotateY(326deg); margin-top: 160px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 76%; height: auto;">
 
                 </div>
             </div>
@@ -87,9 +91,7 @@
 <section id="prices" class="prices padding-100" style="margin-top: -110px;">
     <div class="container">
         <div class="row">
-            @if (Session::has('message'))
-            <span style="color: green">{{ Session::get('message') }}</span>
-            @endif
+            
             {{-- <div class="text-center col-12 section-title" data-aos="fade-zoom-in">
                 <h3>App
                     <span> Price</span>
@@ -102,6 +104,9 @@
                 <div class="space-50"></div>
             </div> --}}
             <div class="col-lg-4 col-md-4 col-12">
+                @if (Session::has('status'))
+            <span style="color: green">{{ Session::get('status') }}</span>
+            @endif
                 <div class="price-table text-center" data-aos="fade-right" data-aos-delay="400">
                     <div class="top background-fullwidth" style="background-image: url(assets/img/gray-bg.jpg);">
                         <h4>Free!</h4>
@@ -122,7 +127,7 @@
                         </ul>
                         <div class="space-50"></div>
                         <a href="#" class="btn btn-primary btn-white btn-theme amount30" data-toggle="modal"
-                            data-target="#staticBackdrop" data-aos="fade-zoom-in"><span>Install</span></a>
+                            data-target="#staticBackdrop" data-aos="fade-zoom-in"><span>install</span></a>
 
                            
                     </div>
@@ -177,6 +182,7 @@
                         <div class="space-50"></div>
                         <a href="#" class="btn btn-primary btn-white btn-theme amount80" data-toggle="modal"
                             data-target="#staticBackdrop"><span>Get Started</span></a>
+                            {{-- <a href="https://buy.stripe.com/test_bIY8wUgLRc0F6VqeUU">BUY</a> --}}
 
                     </div>
                 </div>
@@ -187,6 +193,7 @@
 <!-- End App Price  -->
 
 <!-- Start Why Us -->
+<!-- Start Why Us -->
 <section id="main_features" class="why-us padding-100 background-fullwidth background-fixed "
     style="background-image: url(assets/img/gray-bg.jpg);">
     <div class="container">
@@ -195,7 +202,7 @@
                 <img src="{{url('assets/2.png')}}" class="img-fluid" alt="" style="height: 640px; width: 301px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
             </div>
             <div class="col-md-6" data-aos="fade-zoom-in" data-aos-delay="200">
-                <h3>Featires</h3>
+                <h3>Features</h3>
                 <p>
                     Import your Google Search Console easily to your Google Sheet, easier and more powerful 
                 </p>
@@ -586,117 +593,16 @@
 </section>
 <!-- End FAQ  -->
 
-
-
-
-<!-- Start Download App -->
-<section id="download_app" class="download-app padding-100 pb-0 background-fullwidth background-fixed"
-    style="background-image: url(assets/img/gray-bg.jpg);">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-12" data-aos="fade-right">
-                <h2>Download our free trial App</h2>
-                <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli
-                    incidit
-                    labore
-                    lorem
-                </p>
-                <a href="#" class="btn btn-primary shadow btn-colord btn-theme" tabindex="0">
-                    <i class="fab fa-apple"></i>
-                    <span>Git it on
-                        <br>APP STORE</span>
-                </a>
-                {{-- <a href="#" class="btn btn-primary shadow  btn-colord btn-theme" tabindex="0">
-                    <i class="fab fa-google-play"></i>
-                    <span>Git it on
-                        <br>GOOGLE PLAY</span>
-                </a> --}}
-            </div>
-            <div class="col-lg-6 col-12" data-aos="fade-left" data-aos-delay="400">
-                <img src="assets/img/mobile-6.png" class="img-fluid d-block mx-auto" alt="">
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Download App -->
-
-<!-- Start  Git in touch -->
-<section id="git_in_touch" class="git-in-touch padding-100">
-    <div class="container">
-        <div class="row">
-            <div class="text-center col-12 section-title" data-aos="fade-zoom-in">
-                <h3>Git
-                    <span> in </span>touch
-                </h3>
-                <div class="space-25"></div>
-                <p></p>
-                <div class="space-50"></div>
-            </div>
-        </div>
-        <form data-aos="fade-up" action="{{route('sendMail') }}" method="POST">
-            @csrf
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter Your Name" name="name">
-                        <span class="focus-border"></span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Enter Your Email" name="email">
-                        <span class="focus-border"></span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter Your Subject" name="title">
-                        <span class="focus-border"></span>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group">
-                        <textarea class="form-control" rows="4" placeholder="Enter Your Message" name="body"></textarea>
-                        <span class="focus-border"></span>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="space-25"></div>
-                    <button type="submit" class="btn btn-primary shadow btn-colord btn-theme"><span>Send
-                            Message</span></button>
-                </div>
-            </div>
-        </form>
-        <div class="space-50"></div>
-        
-    </div>
-</section>
-<!-- End  Git in touch  -->
-
-
 <!-- Start  Footer -->
 <footer class="padding-100 pb-0">
-    <div class="subscribe">
-        <div class="container">
-            <form class="subscribe-form row m-0 align-items-center">
-                <div class="col-lg-9 col-md-8">
-                    <div class="form-group mb-0">
-                        <input type="text" class="form-control" placeholder="Enter Your Email">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <a href="#" class="btn btn-primary shadow d-block btn-colord btn-theme"><span>subscribe</span></a>
-                </div>
-            </form>
-        </div>
-    </div>
+
     <div class="space-50"></div>
-    <div class="footer-widgets">
+    <div class="footer-widgets" style="margin-top: -100px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="widget">
-                        <img src="assets/img/fox-logo.png" class="img-fluid" alt="">
+                        <img src="{{url('assets/Searchconsolesheet.png')}}" style="height: 43px; width: 248px;margin-top: -8px;" class="img-fluid" alt="">
                         <p>Sed pottitor lects nibh. Viamus magna justo, lacinia eget consectetur sed, convallis
                             at
                             tellus.
@@ -793,11 +699,34 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="text-align: center">
-                {{-- <h5 class="modal-title" id="staticBackdropLabel">Payment</h5> --}}
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+                <h5 class="modal-title" id="staticBackdropLabel">Payment</h5>
+                <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
+                <script>
+                   $(document).ready(function(){
+                       $('.amount50').on('click',function(){
+                           let bm = '<button class="btn btn-info" style="margin-left: 20px;" id="monthly">Monthly</button><button class="btn btn-info" style="margin-left: 30px;" id="yearly">Yearly</button>';
+                           
+                           $('#b').html(bm)
+                          
+                       })
+                       $('.amount80').on('click',function(){
+                           let bm = '<button class="btn btn-info" style="margin-left: 20px;" id="monthly">Monthly</button><button class="btn btn-info" style="margin-left: 30px;" id="yearly">Yearly</button>';
+                           
+                           $('#b').html(bm)
+
+                       })
+                       $('.amount30').on('click',function(){
+                          let bm = ''; 
+                          $('#b').html(bm)
+                       })
+                   })
+                </script>
+                
+                <span id="b"></span>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+               </button>
+           </div>
             <div class="modal-body">
 
                 <form role="form" action="{{ route('stripePayment') }}" method="post" class="require-validation"
@@ -805,9 +734,15 @@
                     data-stripe-publishable-key="pk_test_51LxpoiIHIgjMjhjeZHoWny0W3mN57En9DPe05u2bRATHi4v5EtPuFA5b1HExSwirurpPLS5HkED8JOhnhPOmbIq000Aokh1XgI"
                     id="payment-form">
                     @csrf
+                    {{-- border css  border-top: none;
+                                    border-left: none;
+                                    border-right: aliceblue; --}}
                     {{-- <input type="hidden" name="token"
                         value="pk_test_51LxpoiIHIgjMjhjeZHoWny0W3mN57En9DPe05u2bRATHi4v5EtPuFA5b1HExSwirurpPLS5HkED8JOhnhPOmbIq000Aokh1XgI">
                     --}}
+                    <span id="hidden"></span>
+                    <span id="hiddenT"></span>
+                    <span id="hiddenTK"></span>
                     <div class='form-row '>
                         <div class='col-xs-12 form-group required'>
                             <label class='control-label'>Name</label> <input class='form-control' name="name" size='70'
@@ -816,34 +751,93 @@
                     </div>
                     <div class='form-row '>
                         <div class='col-xs-12 form-group required'>
-                            <label class='control-label'>Amount</label>
-                            <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
-                            <script>
-                                $(document).ready(function(){
-                        $('.amount30').on('click',function(){
-                            let amount = 0
-                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text'>")
-                        })
-                        $('.amount50').on('click',function(){
-                            let amount = 16
-                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text'>")
-                        })
-                        $('.amount80').on('click',function(){
-                            let amount = 41
-                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text'>")
-                        })
-                    })
-                            </script>
-                            <span id="amount"></span>
-
+                            <label class='control-label'>Email</label> <input class='form-control' name="email" size='70'
+                                type='email' placeholder="Your email Please">
                         </div>
                     </div>
+                    <div class='form-row row'>
+                        <div class='col-xs-12 col-md-4 form-group cvc required'>
+                            <label class='control-label'>Amount</label>
+                            
+                            <script>
+                                            $(document).ready(function(){
+                                    $('.amount30').on('click',function(){
+                                        let amount = 0
+                                        $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' disabled>")
+                                        let h = '<input type="hidden" value="prod_MxN3CPeCIh5Ud5" name="type">';
+                                        $('#hidden').html(h)
+                                        
+                                    })
+                                    $('.amount50').on('click',function(){
+                                        let amount = 16
+                                        $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                        let k = '<input type="hidden" value="prod_MxN8vMacwTW82Q" name="package">';
+                                        let kt = '<input type="hidden" value="price_1MDSJVIHIgjMjhje5d8IbCuS" name="price">';
+                                        $('#hiddenT').html(k)
+                                        $('#hiddenTK').html(kt)
+                                        $('#monthly').on('click',function(){
+                                            let amount = 16
+                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                            let h = '<input type="hidden" value="month" name="type">';
+                                            let k = '<input type="hidden" value="prod_MxN8vMacwTW82Q" name="package">';
+                                            let kt = '<input type="hidden" value="price_1MDSNmIHIgjMjhje1xb2U0dc" name="price">';
+                                            $('#hidden').html(h)
+                                            $('#hiddenT').html(k)
+                                            $('#hiddenTK').html(kt)
+                                        })
+                                        $('#yearly').on('click',function(){
+                                            let amount = 190
+                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                            let h = '<input type="hidden" value="year" name="type">';
+                                            let k = '<input type="hidden" value="prod_MxN8vMacwTW82Q" name="package">';
+                                            let kt = '<input type="hidden" value="price_1MDSNmIHIgjMjhjeSpo1wrR7" name="price">';
+                                            $('#hidden').html(h)
+                                            $('#hiddenT').html(k)
+                                            $('#hiddenTK').html(kt)
+                                        })
+                                    })
+                                    $('.amount80').on('click',function(){
+                                        let amount = 41
+                                        $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                        let k = '<input type="hidden" value="prod_MxN9KFgXHaQ800" name="package">';
+                                        $('#hiddenT').html(k)
+                                        $('#monthly').on('click',function(){
+                                            let amount = 41
+                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                            let h = '<input type="hidden" value="month" name="type">';
+                                            let k = '<input type="hidden" value="prod_MxN9KFgXHaQ800" name="package">';
+                                            let kt = '<input type="hidden" value="price_1MDSOoIHIgjMjhjey8Qv2owW" name="price">';
+                                            $('#hidden').html(h)
+                                            $('#hiddenT').html(k)
+                                            $('#hiddenTK').html(kt)
 
-                    <div class='form-row '>
-                        <div class='col-xs-12 form-group  required'>
-                            <label class='control-label'>Card Number</label> <input autocomplete='off'
-                                class='form-control card-number' size='70' type='text' placeholder="Your Card Number">
+                                        })
+                                        $('#yearly').on('click',function(){
+                                            let amount = 490
+                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                            let h = '<input type="hidden" value="year" name="type">';
+                                            let k = '<input type="hidden" value="prod_MxN9KFgXHaQ800" name="package">';
+                                            let kt = '<input type="hidden" value="price_1MDSOoIHIgjMjhjefRSQFCG0" name="price">';
+                                            $('#hidden').html(h)
+                                            $('#hiddenT').html(k)
+                                            $('#hiddenTK').html(kt)
+
+                                        })
+                                    })
+                                })
+                            </script>
+                            <span id="amount"></span>
                         </div>
+                        <div class='col-xs-12 col-md-8 form-group expiration required'>
+                            <label class='control-label'>Card Number</label> <input autocomplete='off'
+                                class='form-control card-number' id="" size='70'  type='text' placeholder="xxxx xxxx xxxx xxxx" maxlength="16">
+                                <script>
+                                    document.getElementById('iban').addEventListener('input', function (e) {
+                                         e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+                                        });
+                                </script>
+                        </div>
+                        
                     </div>
 
                     <div class='form-row row'>
@@ -864,8 +858,12 @@
 
 
                     <div class="row">
-                        <div class="col-xs-12" style="margin-left: 168px;">
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
+                        <div class="col-xs-12 ">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit"
+                             style="   
+                             width: 241%;
+                            margin-left: 26px;
+                            border-radius: 8px;">Pay Now</button>
                         </div>
                     </div>
 
@@ -913,6 +911,8 @@
         if (!$form.data('cc-on-file')) {
           e.preventDefault();
           Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+        //   let numbers = 
+          
           Stripe.createToken({
             number: $('.card-number').val(),
             cvc: $('.card-cvc').val(),
