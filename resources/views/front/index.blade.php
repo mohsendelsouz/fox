@@ -696,21 +696,119 @@
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <style>
+        .root {
+      --white: white;
+      --gray: #999;
+      --lightgray: whitesmoke;
+      --darkgreen: #2a9d8f;
+      --popular: #ffdd40;
+      --starter: #f73859;
+      --essential: #00aeef;
+      --professional: #ff7f45;
+    }
+    
+    /* SWITCH STYLES
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .switch-wrapper {
+      position: relative;
+      display: inline-flex;
+      padding: 4px;
+      border: 1px solid lightgrey;
+      margin-bottom: 40px;
+      border-radius: 30px;
+      background: var(--white);
+    }
+    
+    .switch-wrapper [type="radio"] {
+      position: absolute;
+      left: -9999px;
+    }
+    
+    .switch-wrapper [type="radio"]:checked#monthly ~ label[for="monthly"],
+    .switch-wrapper [type="radio"]:checked#yearly ~ label[for="yearly"] {
+      color: var(--white);
+    }
+    
+    .switch-wrapper [type="radio"]:checked#monthly ~ label[for="monthly"]:hover,
+    .switch-wrapper [type="radio"]:checked#yearly ~ label[for="yearly"]:hover {
+      background: transparent;
+    }
+    
+    .switch-wrapper
+      [type="radio"]:checked#monthly
+      + label[for="yearly"]
+      ~ .highlighter {
+      transform: none;
+    }
+    
+    .switch-wrapper
+      [type="radio"]:checked#yearly
+      + label[for="monthly"]
+      ~ .highlighter {
+      transform: translateX(100%);
+    }
+    
+    .switch-wrapper label {
+      font-size: 16px;
+      z-index: 1;
+      min-width: 100px;
+      line-height: 32px;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: color 0.25s ease-in-out;
+    }
+    
+    .switch-wrapper label:hover {
+      background: var(--lightgray);
+    }
+    
+    .switch-wrapper .highlighter {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: calc(50% - 4px);
+      height: calc(100% - 8px);
+      border-radius: 30px;
+      background: var(--darkgreen);
+      transition: transform 0.25s ease-in-out;
+    }
+    @media (min-width:350px) {
+
+/* your conditional / responsive CSS inside this condition */
+.ta { margin-left: 44px; }
+.p { 
+    margin-left: 36px;
+    width: 260px;
+ }
+}
+    @media (min-width: 900px) {
+
+/* your conditional / responsive CSS inside this condition */
+.ta {  margin-left: 132px; }
+.p {  
+    margin-left: 43px;
+    width: 206%;
+ }
+}
+
+    </style>
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="text-align: center">
-                <h5 class="modal-title" id="staticBackdropLabel">Payment</h5>
+        <div class="modal-content" style="margin-top: 68px;">
+            <div class="modal-header" style="text-align: center; height: 94px;">
+                <h5 class="modal-title" id="staticBackdropLabel"></h5>
                 <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
                 <script>
                    $(document).ready(function(){
                        $('.amount50').on('click',function(){
-                           let bm = '<button class="btn btn-info" style="margin-left: 20px;" id="monthly">Monthly</button><button class="btn btn-info" style="margin-left: 30px;" id="yearly">Yearly</button>';
+                        //    let bm = '<button class="btn btn-info" style="margin-left: 20px;" id="monthly">Monthly</button><button class="btn btn-info" style="margin-left: 30px;" id="yearly">Yearly</button>';
+                           let bm = '<div class="ta"><div class="switch-wrapper root" style="padding-left: 21px;"><input id="monthly" type="radio" name="switch" checked> <input id="yearly" type="radio" name="switch">  <label for="monthly" style="margin: 2px 5px 3px -20px;font-size: 14px; font-weight: bold;">MONTHLY</label> <label for="yearly" style="margin: 2px 5px 3px -20px; font-size: 14px; font-weight: bold;">YEARLY</label>  <span class="highlighter"></span>  </div></div>';
                            
                            $('#b').html(bm)
                           
                        })
                        $('.amount80').on('click',function(){
-                           let bm = '<button class="btn btn-info" style="margin-left: 20px;" id="monthly">Monthly</button><button class="btn btn-info" style="margin-left: 30px;" id="yearly">Yearly</button>';
+                        let bm = '<div  class="ta"><div class="switch-wrapper root" style="padding-left: 21px;"><input id="monthly" type="radio" name="switch" checked> <input id="yearly" type="radio" name="switch">  <label for="monthly" style="margin: 2px 5px 3px -20px;font-size: 14px; font-weight: bold;">MONTHLY</label> <label for="yearly" style="margin: 2px 5px 3px -20px; font-size: 14px; font-weight: bold;">YEARLY</label>  <span class="highlighter"></span>  </div></div>';
                            
                            $('#b').html(bm)
 
@@ -745,39 +843,39 @@
                     <span id="hiddenTK"></span>
                     <div class='form-row '>
                         <div class='col-xs-12 form-group required'>
-                            <label class='control-label'>Name</label> <input class='form-control' name="name" size='70'
-                                type='text' placeholder="Your Name Please">
+                            <label class='control-label' style="font-size: 14px; font-weight: bold;">NAME</label> <input class='form-control' name="name" size='70'
+                                type='text' placeholder="Your Name Please" style="border: none; border-bottom-style: inset;">
                         </div>
                     </div>
                     <div class='form-row '>
                         <div class='col-xs-12 form-group required'>
-                            <label class='control-label'>Email</label> <input class='form-control' name="email" size='70'
-                                type='email' placeholder="Your email Please">
+                            <label class='control-label' style="font-size: 14px; font-weight: bold;">EMAIL</label> <input class='form-control' name="email" size='70'
+                                type='email' placeholder="Your email Please" style="border: none; border-bottom-style: inset;">
                         </div>
                     </div>
                     <div class='form-row row'>
                         <div class='col-xs-12 col-md-4 form-group cvc required'>
-                            <label class='control-label'>Amount</label>
+                            <label class='control-label' style="font-size: 14px; font-weight: bold;">AMOUNT</label>
                             
                             <script>
                                             $(document).ready(function(){
                                     $('.amount30').on('click',function(){
                                         let amount = 0
-                                        $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' disabled>")
-                                        let h = '<input type="hidden" value="prod_MxN3CPeCIh5Ud5" name="type">';
+                                        $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' disabled style='border: none; border-bottom-style: inset;'>")
+                                        let h = '<input type="hidden" value="prod_MxN3CPeCIh5Ud5" name="type" >';
                                         $('#hidden').html(h)
                                         
                                     })
                                     $('.amount50').on('click',function(){
                                         let amount = 16
-                                        $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                        $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' style='border: none; border-bottom-style: inset;'>")
                                         let k = '<input type="hidden" value="prod_MxN8vMacwTW82Q" name="package">';
                                         let kt = '<input type="hidden" value="price_1MDSJVIHIgjMjhje5d8IbCuS" name="price">';
                                         $('#hiddenT').html(k)
                                         $('#hiddenTK').html(kt)
                                         $('#monthly').on('click',function(){
                                             let amount = 16
-                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' style='border: none; border-bottom-style: inset;'>")
                                             let h = '<input type="hidden" value="month" name="type">';
                                             let k = '<input type="hidden" value="prod_MxN8vMacwTW82Q" name="package">';
                                             let kt = '<input type="hidden" value="price_1MDSNmIHIgjMjhje1xb2U0dc" name="price">';
@@ -787,7 +885,7 @@
                                         })
                                         $('#yearly').on('click',function(){
                                             let amount = 190
-                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' style='border: none; border-bottom-style: inset;'>")
                                             let h = '<input type="hidden" value="year" name="type">';
                                             let k = '<input type="hidden" value="prod_MxN8vMacwTW82Q" name="package">';
                                             let kt = '<input type="hidden" value="price_1MDSNmIHIgjMjhjeSpo1wrR7" name="price">';
@@ -798,12 +896,12 @@
                                     })
                                     $('.amount80').on('click',function(){
                                         let amount = 41
-                                        $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                        $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' style='border: none; border-bottom-style: inset;'>")
                                         let k = '<input type="hidden" value="prod_MxN9KFgXHaQ800" name="package">';
                                         $('#hiddenT').html(k)
                                         $('#monthly').on('click',function(){
                                             let amount = 41
-                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' style='border: none; border-bottom-style: inset;'>")
                                             let h = '<input type="hidden" value="month" name="type">';
                                             let k = '<input type="hidden" value="prod_MxN9KFgXHaQ800" name="package">';
                                             let kt = '<input type="hidden" value="price_1MDSOoIHIgjMjhjey8Qv2owW" name="price">';
@@ -814,7 +912,7 @@
                                         })
                                         $('#yearly').on('click',function(){
                                             let amount = 490
-                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' >")
+                                            $('#amount').html("<input class='form-control' name='amount' value='"+amount+"' size='70' type='text' style='border: none; border-bottom-style: inset;'>")
                                             let h = '<input type="hidden" value="year" name="type">';
                                             let k = '<input type="hidden" value="prod_MxN9KFgXHaQ800" name="package">';
                                             let kt = '<input type="hidden" value="price_1MDSOoIHIgjMjhjefRSQFCG0" name="price">';
@@ -829,12 +927,22 @@
                             <span id="amount"></span>
                         </div>
                         <div class='col-xs-12 col-md-8 form-group expiration required'>
-                            <label class='control-label'>Card Number</label> <input autocomplete='off'
-                                class='form-control card-number' id="" size='70'  type='text' placeholder="xxxx xxxx xxxx xxxx" maxlength="16">
+                            <label class='control-label' style="font-size: 14px; font-weight: bold;">CARD NUMBER</label> <input autocomplete='off'
+                                class='form-control card-number' id="iban" size='70'  type='text' placeholder="xxxx xxxx xxxx xxxx" maxlength="28" style='border: none; border-bottom-style: inset;'>
                                 <script>
-                                    document.getElementById('iban').addEventListener('input', function (e) {
-                                         e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
-                                        });
+                                    // document.getElementById('iban').addEventListener('input', function (e) {
+                                    //     //  e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+                                    //     });
+                                    var input = document.getElementById("iban");
+
+                                    input.onkeydown = function () {
+                                        if (input.value.length > 0) {
+
+                                            if (input.value.length % 4 == 0 && input.value.length<=24) {
+                                                input.value += "    ";
+                                            }
+                                        }
+                                    }
                                 </script>
                         </div>
                         
@@ -842,28 +950,28 @@
 
                     <div class='form-row row'>
                         <div class='col-xs-12 col-md-4 form-group cvc required'>
-                            <label class='control-label'>CVC</label> <input autocomplete='off'
-                                class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+                            <label class='control-label' style="font-size: 14px; font-weight: bold;">CVC</label> <input autocomplete='off'
+                                class='form-control card-cvc' placeholder='ex. 311' size='4' type='text' style='border: none; border-bottom-style: inset;'>
                         </div>
                         <div class='col-xs-12 col-md-4 form-group expiration required'>
-                            <label class='control-label'>Expiration Month</label> <input
-                                class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+                            <label class='control-label' style="font-size: 14px; font-weight: bold;">EXPIRATION MONTH</label> <input
+                                class='form-control card-expiry-month' placeholder='MM' size='2' type='text' style='border: none; border-bottom-style: inset;'>
                         </div>
                         <div class='col-xs-12 col-md-4 form-group expiration required'>
-                            <label class='control-label'>Expiration Year</label> <input
-                                class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+                            <label class='control-label' style="font-size: 14px; font-weight: bold;">EXPIRATION YEAR</label> <input
+                                class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text' style='border: none; border-bottom-style: inset;'>
                         </div>
                     </div>
 
 
 
                     <div class="row">
-                        <div class="col-xs-12 ">
-                            <button class="btn btn-primary btn-lg btn-block" type="submit"
-                             style="   
-                             width: 241%;
-                            margin-left: 26px;
-                            border-radius: 8px;">Pay Now</button>
+                        <div class="col-xs-12 " style="padding-top: 20px; margin-bottom: 25px;">
+                            <button class="btn btn-primary btn-lg btn-block p" type="submit"
+                             style="     border-radius: 8px;
+                             background-color: lightseagreen;
+
+                             font-size: 16px;font-weight: bold; ">Pay Now</button>
                         </div>
                     </div>
 
@@ -873,6 +981,7 @@
         </div>
     </div>
 </div>
+
 <!-- End  Footer  -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
